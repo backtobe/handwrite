@@ -1,7 +1,7 @@
 <!--
  * @Author: zhanglin
  * @Date: 2020-08-21 01:02:10
- * @LastEditTime: 2020-08-25 09:13:32
+ * @LastEditTime: 2020-08-26 09:29:17
  * @LastEditors: zhanglin
  * @Description: 
  * @FilePath: /handwirte/index.html
@@ -13,7 +13,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./second/promise.js"></script>
+    <script src="./third/promise.js"></script>
+    <!-- <script src="./first/map.js"></script> -->
   </head>
   <body>
     <script>
@@ -34,27 +35,34 @@
       // MyPromise.all([1, 3]).then(res => {
       //   console.log(res, 'all then')
       // })
-      const p1 = new MyPromise((resolve, reject) => {
-        setTimeout(() => resolve('p1'), 50)
-      })
+      // const p1 = new MyPromise((resolve, reject) => {
+      //   setTimeout(() => resolve('p1'), 50)
+      // })
 
-      const p2 = new MyPromise((resolve, reject) => {
-        setTimeout(() => resolve('p2'), 100)
-      })
+      // const p2 = new MyPromise((resolve, reject) => {
+      //   setTimeout(() => resolve('p2'), 100)
+      // })
 
-      MyPromise.all([p1, p2]).then(ret => {
-        console.log(ret) // 'p1'
-        return ret
-      })
+      // MyPromise.all([p1, p2]).then(ret => {
+      //   console.log(ret) // 'p1'
+      //   return ret
+      // })
 
       new Promise((resolve, reject) => {
         setTimeout(() => {
-          resolve('success')
+          reject('success')
         }, 1000)
-      }).finally(value => {
-        console.log(value)
+      }).then(data => {
+        console.log(data,'data')
+      },err => {
+        console.log(err,'err')
       })
-      // MyPromise.all
+        let map = new Map()
+        map.set(1,2)
+        map.set(2,12)
+        console.log(map.size)
+        console.log(map.keys())
+        // console.log(map.element(2))
     </script>
   </body>
 </html>

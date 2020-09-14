@@ -1,7 +1,7 @@
 <!--
  * @Author: zhanglin
  * @Date: 2020-08-21 01:02:10
- * @LastEditTime: 2020-09-03 19:26:01
+ * @LastEditTime: 2020-09-13 23:39:34
  * @LastEditors: zhanglin
  * @Description: 
  * @FilePath: /handwirte/index.html
@@ -13,11 +13,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src='./first/Array.js'></script>
-    <!-- <script src="./first/map.js"></script> -->
+    <!-- <script src="./first/debounce-and-throttle.js"></script>
+    <script src="./first/string.js"></script>
+    <script src="./first/instanceof.js"></script> -->
+    <script src="./first/subscribe.js"></script>
+    <script src="./first/Object.js"></script>
+    <style>
+      body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #div1 {
+        height: 20vw;
+        width: 20vw;
+        background-color: aqua;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+    <style>
+      .classA {
+        color: blue;
+      }
+      .classB {
+        color: red;
+      }
+      .classC {
+        color: green;
+      }
+      .border1 {
+        border:1px solid grey
+      }
+      .border2 {
+        border:1px solid pink
+      }
+    </style>
   </head>
   <body>
+    <div id="div1">0</div>
+    <p class="classC classB classA border1 border2">hello</p>
     <script>
+      // // 节流防抖
+      // let arr = [123],str = '11'
+      // div1.onmousemove = debounce(function () {
+      //   // console.log(this,arr,str)
+      //   this.innerText = ++this.innerText
+      // },200,true)
+      // console.log(bigNumberAdd('123456789','987654321'))
+      // console.log(moneyFormat(1000000))
+      function fn1 () {
+        console.log(1)
+      }
+      function fn2 (ev,arg) {
+        console.log(2,ev,arg)
+        pouds.remove(fn1)
+      }
+      var pouds = new subscribe()
+      div1.addEventListener('click',function (ev) {
+        console.log(ev)
+        pouds.fire(ev,111)
+      })
+      pouds.add(fn1)
+      pouds.add(fn2)
+      pouds.add(fn2)
     </script>
   </body>
 </html>

@@ -63,7 +63,7 @@ Array.prototype._map = function (fn) {
   }
   return arr
 }
-console.log([1, 2, 3, 4]._map(item => item > 2))
+console.log([1, 2, 3, 4]._map(item => {console.log(item > 2)}))
 // map end
 
 // forEach start
@@ -167,12 +167,38 @@ Array.prototype._join = function (separator) {
 // join end
 
 // concat
-Array.prototype._concat = function (){
-  if(arguments.length === 0) return this
+// Array.prototype._concat = function (){
+//   if(arguments.length === 0) return this
+//   const length = this.length
+//   this.length = this.length + arguments.length
+//   for(let i = length;i<this.length;i++){
+//     this[i] = 
+//   }
   
+// }
+
+function mergeOrderArray (arr1,arr2) {
+  if(arr1.length === 0) return arr2
+  if(arr2.length === 0) return arr1
+  let arr = []
+  let i = 0,j = 0
+  while(arr1[i] !== undefined || arr2[j] !== undefined) {
+    if(arr1[i] === undefined) {
+      arr.push(arr2[j++])
+    }
+    if(arr2[j] === undefined) {
+      arr.push(arr1[i++])
+    }
+    if(arr1[i] > arr2[j]){
+      arr.push(arr2[j++])
+    }else if( arr1[i] < arr2[j]) {
+      arr.push(arr1[i++])
+    }else {
+      arr.push(arr1[i++],arr2[j++])
+    }
+  }
+  return arr
 }
 
-console.log([1, 2]._join())
-console.log([1, 2].join())
 
-
+console.log(mergeOrderArray([1,2,3],[]))

@@ -10,3 +10,16 @@ function curry01 (fn) {
 let add = (a, b) => a + b
 let curAdd = curry01(add,1,3)
 console.log(curAdd())
+
+function add() {
+  const arg1 = [].slice.call(arguments)
+  function fn() {
+    const arg2 = arg1.concat([].slice.call(arguments))
+    return add.apply(null, arg2)
+  }
+  fn.toString = function () {
+    return arg1.reduce((pre, cur) => pre + cur)
+  }
+  return fn
+}
+add(1)(2)(3)
